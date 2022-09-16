@@ -37,10 +37,6 @@ data Tree = Leaf | Node Int Tree Tree
 
 insert :: Int -> Tree -> Tree
 insert integer Leaf = Node integer Leaf Leaf
--- insert integer (Node value left right) =
---   if integer > value
---     then Node value left (insert integer right)
---     else Node value (insert integer left) right
 
 insert integer (Node value left right)
     | integer == value = Node value left right
@@ -48,8 +44,14 @@ insert integer (Node value left right)
     | otherwise = Node value (insert integer left) right
 
 -- #4
-
--- type TreeValue a = a
--- data PTree = PLeaf | PNode a PTree PTree
+-- data PTree a = PNode a (PTree a) (PTree a) | PLeaf 
 --   deriving (Eq, Show, Read, Ord)
+--
+-- pinsert :: a -> PTree a -> PTree a
+-- pinsert element PLeaf = PNode element PLeaf PLeaf
+-- pinsert element (PNode value left right)
+--     | element == value = PNode value left right
+--     | element > value = PNode value left (pinsert element right)
+--     | otherwise = PNode value (pinsert element left) right
+
 
