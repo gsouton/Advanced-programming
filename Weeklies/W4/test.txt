@@ -1,0 +1,195 @@
+Zipping files
+Sending code.zip to server (wait for for it...)
+
+
+Checking submission...
+=====================
+You have a code/part1/src/async.erl. Good.
+You have a code/part2/src/emoji.erl. Good.
+You have a code/part2/tests/test_emoji.erl. Good.
+
+You have a code/timesheet.txt. Good.
+  Timesheet looks OK
+
+Warning:
+  Please do not include ./code/part2/tests/test_emoji.beam.
+Warning:
+  Please do not include ./code/part2/src/love_emoji.beam.
+Warning:
+  Please do not include ./code/part2/src/emoji.beam.
+Warning:
+  Please do not include ./code/part1/src/async.beam.
+
+
+Building warmup async...
+========================
+async.erl: OK
+
+
+Checking async API...
+======================
+OK
+
+
+Testing async
+==============
+
+Simple tests
+    N =:= wait(new(fun(X) -> X end, N)):  ... *FAILED*
+    A = new(fun(X) -> throw(X+1) end, N), N+1 =:= try wait(A), ups catch E -> E end:  ... *FAILED*
+    A = new(fun never_returns/0, 42), nothing =:= poll(A):  ... *FAILED*
+    A = new(fun(X) -> X end, N), N =:= wait(A), wait(A) =:= wait(A):  ... *FAILED*
+    A = new(fun(X) -> X+1 end, N), N+1 =:= wait(A), {ok, wait(A)} =:= poll(A):  ... *FAILED*
+    [done in 0.021 s]
+
+Concurrency tests
+    E = async:new(fun(X) -> X end, 5), F = async:new(fun(X) -> X end, 5), G = async:new(fun Loop(X) -> Loop(X) end, 5), 5 =:= async:wait(F):  ... *FAILED*
+    One process creates the action, another waits for it:  ... *cancelled*  :: skipped
+
+
+Failures:
+
+  1) onlineta_async_tests:-standard_tests/0-fun-32-/0:14: N =:= wait(new(fun(X) -> X end, N))
+     Failure/Error: {error,badarg,
+                        [{erlang,spawn,[async|...],[...]},
+                         {async,new,2,...},
+                         {onlineta_async_tests,'-standard_tests/0-fun-32-',...},
+                         {eunit_test,...},
+                         {...}|...]}
+
+  2) onlineta_async_tests:-standard_tests/0-fun-29-/0:16: A = new(fun(X) -> throw(X+1) end, N), N+1 =:= try wait(A), ups catch E -> E end
+     Failure/Error: ?assertException(throw, 1337, wait ( new ( fun ( X ) -> throw ( X + 1 ) end , 1336 ) ))
+       expected: exception { throw , 1337 , [...] }
+            got: exception {error,badarg,
+                            [{erlang,spawn,
+                              [async,#Fun<onlineta_async_tests.18.119491645>,
+                               1336],
+                              [{error_info,#{module => erl_erts_errors}}]},
+                             {async,new,2,[{file,"async.erl"},{line,6}]},
+                             {onlineta_async_tests,
+                              '-standard_tests/0-fun-29-',0,
+                              [{file,
+                                "/home/user/curtest/warmup/onlineta_async_tests.erl"},
+                               {line,17}]},
+                             {eunit_test,run_testfun,1,
+                              [{file,"eunit_test.erl"},{line,71}]},
+                             {eunit_proc,run_test,1,
+                              [{file,"eunit_proc.erl"},{line,531}]},
+                             {eunit_proc,with_timeout,3,
+                              [{file,"eunit_proc.erl"},{line,356}]},
+                             {eunit_proc,handle_test,2,
+                              [{file,"eunit_proc.erl"},{line,514}]},
+                             {eunit_proc,tests_inorder,3,
+                              [{file,"eunit_proc.erl"},{line,456}]}]}
+     %% /home/user/curtest/warmup/onlineta_async_tests.erl:16 in `onlineta_async_tests:-standard_tests/0-fun-29-/0`
+
+  3) onlineta_async_tests:-standard_tests/0-fun-26-/0:19: A = new(fun never_returns/0, 42), nothing =:= poll(A)
+     Failure/Error: {error,badarg,
+                        [{erlang,spawn,[async|...],[...]},
+                         {async,new,2,...},
+                         {onlineta_async_tests,'-standard_tests/0-fun-26-',...},
+                         {eunit_test,...},
+                         {...}|...]}
+
+  4) onlineta_async_tests:-standard_tests/0-fun-23-/0: A = new(fun(X) -> X end, N), N =:= wait(A), wait(A) =:= wait(A)
+     Failure/Error: {error,badarg,
+                        [{erlang,spawn,[async|...],[...]},
+                         {async,new,2,...},
+                         {onlineta_async_tests,'-standard_tests/0-fun-23-',...},
+                         {eunit_test,...},
+                         {...}|...]}
+
+  5) onlineta_async_tests:-standard_tests/0-fun-18-/0: A = new(fun(X) -> X+1 end, N), N+1 =:= wait(A), {ok, wait(A)} =:= poll(A)
+     Failure/Error: {error,badarg,
+                        [{erlang,spawn,[async|...],[...]},
+                         {async,new,2,...},
+                         {onlineta_async_tests,'-standard_tests/0-fun-18-',...},
+                         {eunit_test,...},
+                         {...}|...]}
+
+  6) onlineta_async_tests:-standard_tests/0-fun-13-/0:39: E = async:new(fun(X) -> X end, 5), F = async:new(fun(X) -> X end, 5), G = async:new(fun Loop(X) -> Loop(X) end, 5), 5 =:= async:wait(F)
+     Failure/Error: {error,badarg,
+                        [{erlang,spawn,[async|...],[...]},
+                         {async,new,2,...},
+                         {onlineta_async_tests,'-standard_tests/0-fun-13-',...},
+                         {eunit_test,...},
+                         {...}|...]}
+
+Cancelled:
+
+
+Finished in ? seconds
+7 tests, 6 failures, 1 cancelled
+
+
+Building emoji
+--------------------
+emoji.erl:6:2: Warning: type shortcode() is unused
+%    6| -type shortcode() :: string().
+%     |  ^
+
+emoji.erl:7:2: Warning: type emoji() is unused
+%    7| -type emoji() :: binary().
+%     |  ^
+
+emoji.erl:8:2: Warning: type analytic_fun(_) is unused
+%    8| -type analytic_fun(State) :: fun((shortcode(), State) -> State).
+%     |  ^
+
+emoji.erl: OK
+love_emoji.erl:4:1: Warning: function hit/2 is unused
+%    4| hit(_, N) -> N+1.
+%     | ^
+
+love_emoji.erl:5:1: Warning: function accessed/2 is unused
+%    5| accessed(SC, TS) ->
+%     | ^
+
+love_emoji.erl: OK
+
+
+Checking Emoji API
+========================
+OK
+
+
+Type checking Erlang files with dialyzer
+=========================================
+  Proceeding with analysis...
+love_emoji.erl:4:1: Function hit/2 will never be called
+love_emoji.erl:5:1: Function accessed/2 will never be called
+Unknown functions:
+  list:map/2 (/tmp/tmpg3zgyqk4/code/part2/src/emoji.erl:81:5)
+ done in 0m0.52s
+done (warnings were emitted)
+
+
+Testing Emoji server
+======================
+
+Start tests
+    Sanity check: starting an emoji server and stopping it.:  ... OK  [0.011 s] 
+    Starting two servers and stopping them:  ... OK  [0.011 s] 
+    [done in 0.014 s]
+
+Basic functionality (starting and stopping a server for each test)
+    Register smiley emoji three times:  ... OK  
+    Register smiley emoji and look it up:  ... OK  
+    Register smiley emoji, delete it and check that it is gone:  ... OK  
+    Register smiley emoji, make alias and look alias up:  ... OK  
+    Register smiley emoji, make alias to alias and look last alias up:  ... OK  
+    Register smiley emoji, make alias and delete original:  ... OK  
+    Register smiley emoji, make alias and delete original, check that alias is gone:  ... OK  
+    Register smiley emoji, make alias and delete alias, check that both are gone:  ... OK  
+    Register emoji, make multiple aliases, delete one and check that all are gone:  ... OK  
+    [done in 0.028 s]
+
+Analytics (where `Hit = fun(_, N) -> N+1 end` and `Last = fun (S, _) -> S end`) 
+    Register Hit two timesOur tests timed out.
+This may indicate that the code (perhaps in the test) is hanging waiting for some message, or that your code has an infinite loop.
+submission/check-files.sh FAILED
+warmup/run-tests.sh FAILED
+static/dialyzer.sh FAILED
+dynamic/run-tests.sh FAILED
+Fatal problem:
+  FATAL TEST FAILURE; Cowardly refusing to conduct further tests.

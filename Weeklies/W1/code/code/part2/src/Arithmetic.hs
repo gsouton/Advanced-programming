@@ -19,7 +19,7 @@ showExp (Cst integer) = show integer
 showExp (Add exp1 exp2) = "(" ++ showExp exp1 ++ ")" ++ "+" ++ "(" ++ showExp exp2 ++ ")"
 showExp (Sub exp1 exp2) = "(" ++ showExp exp1 ++ ")" ++ "-" ++ "(" ++ showExp exp2 ++ ")"
 showExp (Mul exp1 exp2) = "(" ++ showExp exp1 ++ ")" ++ "*" ++ "(" ++ showExp exp2 ++ ")"
-showExp (Div exp1 exp2) = "(" ++ showExp exp1 ++ ")" ++ "div" ++ "(" ++ showExp exp2 ++ ")"
+showExp (Div exp1 exp2) = "(" ++ showExp exp1 ++ ")" ++ "`div`" ++ "(" ++ showExp exp2 ++ ")"
 showExp (Pow exp1 exp2) = "(" ++ showExp exp1 ++ ")" ++ "^" ++ "(" ++ showExp exp2 ++ ")"
 showExp (If {}) = undefined
 showExp (Var _) = undefined
@@ -31,8 +31,18 @@ evalSimple (Cst integer) = integer
 evalSimple (Add exp1 exp2) = evalSimple exp1 + evalSimple exp2
 evalSimple (Sub exp1 exp2) = evalSimple exp1 - evalSimple exp2
 evalSimple (Mul exp1 exp2) = evalSimple exp1 * evalSimple exp2
-evalSimple (Div exp1 exp2) = evalSimple exp1 `div` evalSimple exp2
-evalSimple (Pow exp1 exp2) = evalSimple exp1 ^ evalSimple exp2
+evalSimple (Div exp1 exp2) =
+  let left = evalSimple exp1
+   in let right = evalSimple exp2
+       in if right == 0
+            then error "Cannot divide by 0"
+            else left `div` right
+evalSimple (Pow exp1 exp2) =
+  let left = evalSimple exp1
+   in let right = evalSimple exp2
+       in if right < 0
+            then error "Pow is non negative operation"
+            else left ^ right
 evalSimple (If {}) = undefined
 evalSimple (Var _) = undefined
 evalSimple (Let {}) = undefined
@@ -47,8 +57,18 @@ evalFull (Cst integer) _env = integer
 evalFull (Add exp1 exp2) env = evalFull exp1 env + evalFull exp2 env
 evalFull (Sub exp1 exp2) env = evalFull exp1 env - evalFull exp2 env
 evalFull (Mul exp1 exp2) env = evalFull exp1 env * evalFull exp2 env
-evalFull (Div exp1 exp2) env = evalFull exp1 env `div` evalFull exp2 env
-evalFull (Pow exp1 exp2) env = evalFull exp1 env ^ evalFull exp2 env
+evalFull (Div exp1 exp2) env =
+  let left = evalFull exp1 env
+   in let right = evalFull exp2 env
+       in if right == 0
+            then error "Cannot divide by 0"
+            else left `div` right
+evalFull (Pow exp1 exp2) env =
+  let left = evalFull exp1 env
+   in let right = evalFull exp2 env
+       in if right < 0
+            then error "Pow is non negative operation"
+            else left ^ right
 evalFull (If {test = t, yes = y, no = n}) env =
   if evalFull t env /= 0
     then evalFull y env
@@ -92,11 +112,17 @@ evalErr (Mul exp1 exp2) env =
 evalErr (Div exp1 exp2) env =
   case evalBranchErr exp1 exp2 env of
     Left err -> Left err
-    Right (left, right) -> Right (left `div` right)
+    Right (left, right) ->
+      if right == 0
+        then Left EDivZero
+        else Right (left `div` right)
 evalErr (Pow exp1 exp2) env =
   case evalBranchErr exp1 exp2 env of
     Left err -> Left err
-    Right (left, right) -> Right (left ^ right)
+    Right (left, right) ->
+      if right < 0
+        then Left ENegPower
+        else Right (left ^ right)
 evalErr (If {test = t, yes = y, no = n}) env =
   case evalErr t env of
     Left err -> Left err
@@ -116,12 +142,11 @@ evalErr (Sum {var = v, from = f, to = t, body = b}) env =
       Right end ->
         if begin > end
           then Right 0
-          else
-            let res = 0
-             in case evalSum [begin .. end] v b env res of
-                  Left err -> Left err
-                  Right _ -> Right res
+          else case evalSum [begin .. end] v b env 0 of
+            Left err -> Left err
+            Right res -> Right res
 
+-- Sum an array of value while applying to each element the body of Sum
 evalSum :: [] Integer -> VName -> Exp -> Env -> Integer -> Either ArithError Integer
 evalSum [] _ _ _ res = Right res
 evalSum (h : list) vname body env res =

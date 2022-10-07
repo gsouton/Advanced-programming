@@ -1,0 +1,2 @@
+echo "Start testing..."
+stack onlineta.hs ass2 ./code/code | less 

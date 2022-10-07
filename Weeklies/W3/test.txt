@@ -1,0 +1,294 @@
+Zipping files
+Sending code.zip to server (wait for for it...)
+
+
+
+Checking files...
+
+You have a code/part1/src/WarmupReadP.hs. Good.
+You have a code/part1/src/WarmupParsec.hs. Good.
+You have a code/part2/src/BoaAST.hs. Good.
+You have a code/part2/src/BoaInterp.hs. Good.
+You have a code/part2/src/BoaParser.hs. Good.
+
+You have a code/timesheet.txt. Good.
+  Timesheet looks OK
+
+
+
+
+Building part 1
+OK
+
+
+Building part 2
+OK
+
+Running hlint on part 1 (ReadP)
+Running hlint...
+No hints
+
+Running hlint on part 1 (Parsec)
+Running hlint...
+No hints
+
+Running hlint on part 2
+Running hlint...
+/tmp/tmpkuj1rj10/code/part2/src/BoaParser.hs:240:3-63: Warning: Redundant return
+Found:
+  do exp <- pExp
+     skip
+     res <- pExpCall' name [exp]
+     return res
+Perhaps:
+  do exp <- pExp
+     skip
+     pExpCall' name [exp]
+
+1 hint
+
+
+
+Running some dynamic tests for Part 1...
+Warmup tests
+  ReadP variant
+    numeral 0:         OK
+    numeral 123:       OK
+    negation:          FAIL
+      onlinetatests/Tests.hs:25:
+      Parsing: "-7"
+      expected: Right (Negate (Num 7))
+       but got: Right (Num (-7))
+    addition:          OK
+    subtraction:       OK
+    parens:            FAIL
+      onlinetatests/Tests.hs:25:
+      Parsing: "((-1)+(2-3))"
+      expected: Right (Add (Negate (Num 1)) (Add (Num 2) (Negate (Num 3))))
+       but got: Left "Cannot parse"
+    spaced string:     FAIL
+      onlinetatests/Tests.hs:25:
+      Parsing: "\t \n - 1 + 2 - ( 3 ) "
+      expected: Right (Add (Add (Negate (Num 1)) (Num 2)) (Negate (Num 3)))
+       but got: Left "Cannot parse"
+    *trailing garbage: OK
+    *letters:          OK
+    *double negation:  OK
+    *mixed ops:        FAIL
+      onlinetatests/Tests.hs:31:
+      Parsing: "2+-3"
+      expected: Left "<message>"
+       but got: Right (Add (Num 2) (Num (-3)))
+    *prefix plus:      OK
+  Parsec variant
+    numeral 0:         FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+    numeral 123:       FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+    negation:          FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+    addition:          FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+    subtraction:       FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+    parens:            FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+    spaced string:     FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+    *trailing garbage: FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+    *letters:          FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+    *double negation:  FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+    *mixed ops:        FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+    *prefix plus:      FAIL
+      Exception: Prelude.undefined
+      CallStack (from HasCallStack):
+        error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+        undefined, called at src/WarmupParsec.hs:23:15 in main:WarmupParsec
+
+16 out of 24 tests failed (0.02s)
+Warning:
+  Some tests for Part 1 failed, please comment on this in your report
+
+
+Running some dynamic tests for Part 2...
+Boa Parser tests
+  Lexical issues
+    Complex terminals
+      identifiers
+        simple:                      OK
+        complex:                     OK
+        underscore:                  OK
+        function:                    OK
+        non-Boa keyword:             OK
+        miscapitalized keyword:      OK
+        leading keyword:             FAIL
+          Exception: Grammar is ambigious
+          CallStack (from HasCallStack):
+            error, called at src/BoaParser.hs:78:8 in main:BoaParser
+        trailing keyword:            OK
+        *keyword RHS:                OK
+        *keyword LHS:                OK
+        *keyword call:               OK
+      numbers
+        simple:                      OK
+        negative:                    OK
+        zero:                        OK
+        negative zero:               OK
+        *plus-signed:                OK
+        *negative spaced:            OK
+        *leading zero:               OK
+        *hex:                        OK
+        *spaced:                     OK
+      strings
+        simple:                      OK
+        empty:                       OK
+        special chars:               OK
+        simple escapes:              OK
+        escaped newlines:            OK
+        *newline:                    OK
+        *tab:                        OK
+        *DEL:                        OK
+        *NUL:                        OK
+        *quote:                      OK
+        *quotes:                     OK
+        *unfinished:                 OK
+        *bad escape (space):         OK
+        *bad escape (tab):           OK
+        *bad escape (dquote):        OK
+        *bad escape (t):             OK
+        *bad escape (N):             OK
+        *bad escape (at end):        OK
+    Whitespace & comments
+      around ident:                  OK
+      around num:                    OK
+      around string:                 OK
+      around keyword:                OK
+      around symbols:                OK
+      tabs and newlines:             OK
+      interspersed:                  OK
+      not needed:                    OK
+      comments:                      OK
+      empty comments:                OK
+      comment at eof:                OK
+      comment as separator:          OK
+      large whitespace:              OK
+      many comments:                 OK
+      *whitespace in symbol:         OK
+      *missing space before in:      OK
+      *missing space after in:       OK
+      *missing space between not in: OK
+      *missing space compr body:     OK
+      *missing space compr for:      OK
+      *missing space compr in:       OK
+      *missing space compr if:       OK
+      *comment in string:            OK
+  Syntactic issues
+    General grammar
+      Expressions
+        misc:                        OK
+        all arith ops:               OK
+        all plain relational ops:    OK
+        all negated relational ops:  OK
+        call 0 args:                 OK
+        call 1 arg:                  OK
+        nested calls:                OK
+        strange ranges:              OK
+        comprehension:               OK
+        comprehension for ynot in:   OK
+        comprehension for in in:     OK
+        deep parens:                 TIMEOUT (1.04s)
+          Timed out after 1s
+        deep brackets:               TIMEOUT (1.04s)
+          Timed out after 1s
+        *empty parens:               OK
+        *deep parens ):              TIMEOUT (1.20s)
+          Timed out after 1s
+        *( deep parens:              TIMEOUT (1.18s)
+          Timed out after 1s
+        *deep brackets ]:            TIMEOUT (1.12s)
+          Timed out after 1s
+        *[ deep brackets:            TIMEOUT (2.30s)
+          Timed out after 1s
+        *comma:                      OK
+        *slash:                      OK
+        *diamond:                    OK
+        *parens comma:               OK
+        *call no parens:             OK
+        *call double parens:         OK
+        *comprehension if:           OK
+        *comprehension if-for:       OK
+        *comprehension bad for LHS:  OK
+        *comprehension no body:      OK
+        *comprehension for not in:   OK
+        *comma comprehension:        OK
+        *comprehension comma:        OK
+      Statements/programs
+        def:                         OK
+        seq:                         OK
+        def minus:                   OK
+        def eq:                      OK
+        equality test:               OK
+        *empty:                      OK
+        *empty stmt L:               OK
+        *empty stmt R:               OK
+        *empty stmt M:               OK
+        *bad def LHS:                OK
+        *parenthesized def:          OK
+        *nested def:                 OK
+    Disambiguation
+      Precedence
+        increasing:                  OK
+        falling:                     OK
+        *not as arg:                 OK
+      Associativity
+        negation:                    OK
+        additive:                    OK
+        multiplicative:              OK
+        *relational:                 OK (0.04s)
+
+7 out of 111 tests failed (7.98s)
+Warning:
+  Some tests for Part 2 failed, please comment on this in your report
+dynamic/runtests.sh FAILED
+---
+I am not fully satisfied.
+---
+Found a bug? Are the messages too cryptic?
+Let us know on Absalon or Discord.

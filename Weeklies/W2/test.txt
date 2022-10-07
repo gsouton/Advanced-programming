@@ -1,0 +1,633 @@
+Zipping files
+Sending code.zip to server (wait for for it...)
+
+
+
+Checking files...
+
+You have a code/part1/src/Warmup.hs. Good.
+You have a code/part2/src/BoaInterp.hs. Good.
+You have a code/part2/src/BoaAST.hs. Good.
+
+You have a code/timesheet.txt. Good.
+  Timesheet looks OK
+
+
+
+
+Building part 1
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:22:21: warning: [-Wunused-matches]
+    Defined but not used: ‘read_data’
+   |
+22 |   return a = RWSP (\read_data state_data -> (a, mempty, state_data))
+   |                     ^^^^^^^^^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:54:18: warning: [-Wunused-matches]
+    Defined but not used: ‘r’
+   |
+54 | tellP w = RWSP (\r s -> ((), w, s))
+   |                  ^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:58:15: warning: [-Wunused-matches]
+    Defined but not used: ‘r’
+   |
+58 | getP = RWSP (\r s -> (s, mempty, s))
+   |               ^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:62:18: warning: [-Wunused-matches]
+    Defined but not used: ‘r’
+   |
+62 | putP s' = RWSP (\r s -> ((), mempty, s'))
+   |                  ^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:62:20: warning: [-Wunused-matches]
+    Defined but not used: ‘s’
+   |
+62 | putP s' = RWSP (\r s -> ((), mempty, s'))
+   |                    ^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:97:21: warning: [-Wunused-matches]
+    Defined but not used: ‘r’
+   |
+97 |   return a = RWSE (\r s -> Right (a, mempty, s))
+   |                     ^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:118:21: warning: [-Wunused-matches]
+    Defined but not used: ‘r’
+    |
+118 | withE r' m = RWSE (\r s -> runRWSE m r' s)
+    |                     ^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:121:18: warning: [-Wunused-matches]
+    Defined but not used: ‘r’
+    |
+121 | tellE w = RWSE (\r s -> Right ((), w, s))
+    |                  ^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:124:15: warning: [-Wunused-matches]
+    Defined but not used: ‘r’
+    |
+124 | getE = RWSE (\r s -> Right(s, mempty, s))
+    |               ^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:127:17: warning: [-Wunused-matches]
+    Defined but not used: ‘r’
+    |
+127 | putE s' = RWSE(\r s -> Right((), mempty, s'))
+    |                 ^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:127:19: warning: [-Wunused-matches]
+    Defined but not used: ‘s’
+    |
+127 | putE s' = RWSE(\r s -> Right((), mempty, s'))
+    |                   ^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:130:18: warning: [-Wunused-matches]
+    Defined but not used: ‘r’
+    |
+130 | throwE e = RWSE(\r s -> Left e)
+    |                  ^
+
+/tmp/tmpjv7vs9ju/code/part1/src/Warmup.hs:130:20: warning: [-Wunused-matches]
+    Defined but not used: ‘s’
+    |
+130 | throwE e = RWSE(\r s -> Left e)
+    |                    ^
+OK
+
+
+Building part 2
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:22:1: warning: [-Wunused-imports]
+    The import of ‘Data.List’ is redundant
+      except perhaps to import instances from ‘Data.List’
+    To import instances alone, use: import Data.List()
+   |
+22 | import Data.List (intercalate, isInfixOf)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:32:21: warning: [-Wunused-matches]
+    Defined but not used: ‘env’
+   |
+32 |   return a = Comp (\env -> (Right a, []))
+   |                     ^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:56:25: warning: [-Wunused-matches]
+    Defined but not used: ‘env’
+   |
+56 | abort runError = Comp (\env -> (Left runError, []))
+   |                         ^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:62:42: warning: [-Wunused-matches]
+    Defined but not used: ‘value’
+   |
+62 |         let filter_env = filter (\(name, value) -> name == vname) env
+   |                                          ^^^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:73:21: warning: [-Wunused-matches]
+    Defined but not used: ‘env’
+   |
+73 | output msg = Comp (\env -> (Right (), [msg]))
+   |                     ^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:108:16: warning: [-Wunused-matches]
+    Defined but not used: ‘x’
+    |
+108 |     (StringVal x, IntVal y) -> Right FalseVal
+    |                ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:108:26: warning: [-Wunused-matches]
+    Defined but not used: ‘y’
+    |
+108 |     (StringVal x, IntVal y) -> Right FalseVal
+    |                          ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:109:13: warning: [-Wunused-matches]
+    Defined but not used: ‘x’
+    |
+109 |     (IntVal x, StringVal y) -> Right FalseVal
+    |             ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:109:26: warning: [-Wunused-matches]
+    Defined but not used: ‘y’
+    |
+109 |     (IntVal x, StringVal y) -> Right FalseVal
+    |                          ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:138:6: warning: [-Wunused-matches]
+    Defined but not used: ‘val’
+    |
+138 | isIn val [] = False
+    |      ^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:168:7: warning: [-Wunused-matches]
+    Defined but not used: ‘l’
+    |
+168 | range l = abort (EBadArg "Wrong number of arguments for built-in function 'range'")
+    |       ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:220:8: warning: [-Wunused-matches]
+    Defined but not used: ‘fname’
+    |
+220 |   Call fname params -> do 
+    |        ^^^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:221:9: warning: [-Wunused-local-binds]
+    Defined but not used: ‘v’
+    |
+221 |     let v = map eval params
+    |         ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:227:8: warning: [-Wunused-matches]
+    Defined but not used: ‘exprs’
+    |
+227 |   List exprs -> undefined
+    |        ^^^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:228:9: warning: [-Wunused-matches]
+    Defined but not used: ‘exp’
+    |
+228 |   Compr exp clause_list -> undefined
+    |         ^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:228:13: warning: [-Wunused-matches]
+    Defined but not used: ‘clause_list’
+    |
+228 |   Compr exp clause_list -> undefined
+    |             ^^^^^^^^^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:22:1: warning: [-Wunused-imports]
+    The import of ‘Data.List’ is redundant
+      except perhaps to import instances from ‘Data.List’
+    To import instances alone, use: import Data.List()
+   |
+22 | import Data.List (intercalate, isInfixOf)
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:32:21: warning: [-Wunused-matches]
+    Defined but not used: ‘env’
+   |
+32 |   return a = Comp (\env -> (Right a, []))
+   |                     ^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:56:25: warning: [-Wunused-matches]
+    Defined but not used: ‘env’
+   |
+56 | abort runError = Comp (\env -> (Left runError, []))
+   |                         ^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:62:42: warning: [-Wunused-matches]
+    Defined but not used: ‘value’
+   |
+62 |         let filter_env = filter (\(name, value) -> name == vname) env
+   |                                          ^^^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:73:21: warning: [-Wunused-matches]
+    Defined but not used: ‘env’
+   |
+73 | output msg = Comp (\env -> (Right (), [msg]))
+   |                     ^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:108:16: warning: [-Wunused-matches]
+    Defined but not used: ‘x’
+    |
+108 |     (StringVal x, IntVal y) -> Right FalseVal
+    |                ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:108:26: warning: [-Wunused-matches]
+    Defined but not used: ‘y’
+    |
+108 |     (StringVal x, IntVal y) -> Right FalseVal
+    |                          ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:109:13: warning: [-Wunused-matches]
+    Defined but not used: ‘x’
+    |
+109 |     (IntVal x, StringVal y) -> Right FalseVal
+    |             ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:109:26: warning: [-Wunused-matches]
+    Defined but not used: ‘y’
+    |
+109 |     (IntVal x, StringVal y) -> Right FalseVal
+    |                          ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:138:6: warning: [-Wunused-matches]
+    Defined but not used: ‘val’
+    |
+138 | isIn val [] = False
+    |      ^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:168:7: warning: [-Wunused-matches]
+    Defined but not used: ‘l’
+    |
+168 | range l = abort (EBadArg "Wrong number of arguments for built-in function 'range'")
+    |       ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:220:8: warning: [-Wunused-matches]
+    Defined but not used: ‘fname’
+    |
+220 |   Call fname params -> do 
+    |        ^^^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:221:9: warning: [-Wunused-local-binds]
+    Defined but not used: ‘v’
+    |
+221 |     let v = map eval params
+    |         ^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:227:8: warning: [-Wunused-matches]
+    Defined but not used: ‘exprs’
+    |
+227 |   List exprs -> undefined
+    |        ^^^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:228:9: warning: [-Wunused-matches]
+    Defined but not used: ‘exp’
+    |
+228 |   Compr exp clause_list -> undefined
+    |         ^^^
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:228:13: warning: [-Wunused-matches]
+    Defined but not used: ‘clause_list’
+    |
+228 |   Compr exp clause_list -> undefined
+    |             ^^^^^^^^^^^
+OK
+
+Running hlint on part 1
+Running hlint...
+No hints
+
+Running hlint on part 2
+Running hlint...
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:70:28-50: Suggestion: Use :
+Found:
+  [(vname, value)] ++ env
+Perhaps:
+  (vname, value) : env
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:(138,1)-(140,26): Suggestion: Use foldr
+Found:
+  isIn val [] = False
+  isIn val (h : t) = (val == h) || isIn val t
+Perhaps:
+  isIn val t = foldr (\ h -> (||) (val == h)) False t
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:156:61-76: Warning: Avoid lambda
+Found:
+  (\ x -> IntVal x)
+Perhaps:
+  IntVal
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:161:30-45: Warning: Avoid lambda
+Found:
+  (\ x -> IntVal x)
+Perhaps:
+  IntVal
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:166:30-45: Warning: Avoid lambda
+Found:
+  (\ x -> IntVal x)
+Perhaps:
+  IntVal
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:171:63-72: Suggestion: Redundant bracket
+Found:
+  if null acc then "[" else (head acc)
+Perhaps:
+  if null acc then "[" else head acc
+
+/tmp/tmpjv7vs9ju/code/part2/src/BoaInterp.hs:171:151-160: Suggestion: Redundant bracket
+Found:
+  (last acc) ++ "]"
+Perhaps:
+  last acc ++ "]"
+
+7 hints
+
+
+
+Running some dynamic tests for Part 1...
+Warm-up (RWS) tests (all starting from r = 7, s = 10.0)
+  allTests:                                                   OK
+  RWSP tests
+    Monad components
+      return 3:                                               OK
+      fmap (* 2) (return 3):                                  OK
+      R: !ask! >>= \a -> !(a,ask)!):                          OK
+      W: !tell"1"! >> !tell"2"!:                              OK
+      S: !get+1,modify (*2)! >>= \a -> !(a,get),modify (+3)!: OK
+    Monad operations
+      askP:                                                   OK
+      withP 9 !ask!:                                          OK
+      tellP "foo":                                            OK
+      getP:                                                   OK
+      putP 9.0:                                               OK
+  RWSE tests
+    Monad components
+      return 3:                                               OK
+      fmap (* 2) (return 3):                                  OK
+      R: !ask! >>= \a -> !(a,ask)!):                          OK
+      W: !tell"1"! >> !tell"2"!:                              OK
+      S: !get+1,modify (*2)! >>= \a -> !(a,get),modify (+3)!: OK
+      E: !throw"e"! >>= \a->error"unreachable":               OK
+      E: !get+1,modify(*2),tell"1"! >> !throw"e"!:            OK
+    Monad operations
+      askE:                                                   OK
+      withE 9 !ask!:                                          OK
+      tellE "foo":                                            OK
+      getE:                                                   OK
+      putE 9.0:                                               OK
+      throwE "e":                                             OK
+
+All 24 tests passed (0.01s)
+
+
+Running some dynamic tests for Part 2...
+Boa Interpreter tests
+  Monad components
+    return 3:                                          OK
+    fmap (+ 1) (return 3):                             OK
+    reader part of >>=:                                OK
+    writer part of >>=:                                OK
+    error part of >>= (error on LHS):                  OK
+    error part of >>= (error on RHS):                  FAIL
+      onlinetatests/Tests.hs:272:
+      expected: (Left (EBadArg "err2"),["out1","out2"])
+       but got: (Left (EBadArg "err2"),["out2"])
+  Monad operations
+    abort:                                             OK
+    look x [x=4,y=5]:                                  OK
+    look y [x=4,y=5]:                                  OK
+    look x [x=4,<others>]:                             OK
+    *look z [x=4,y=5]:                                 OK
+    withBinding y 6 [x=4,y=5] ...:                     OK
+    withBinding y 6 [x=4,y=5] err:                     OK
+    output "":                                         OK
+    output "abc":                                      OK
+  Auxilary functions
+    truthy
+      truthy None:                                     OK
+      truthy True:                                     OK
+      truthy False:                                    OK
+      truthy 5:                                        OK
+      truthy 0:                                        OK
+      truthy (-1):                                     OK
+      truthy '':                                       OK
+      truthy ' ':                                      OK
+      truthy 'False':                                  OK
+      truthy '0':                                      OK
+      truthy []:                                       OK
+      truthy [0]:                                      OK
+      truthy [False,False]:                            OK
+      truthy [[]]:                                     OK
+    operate
+      arithmetic
+        operate Plus 3 4:                              OK
+        operate Minus 3 4:                             OK
+        operate Times 3 4:                             OK
+        operate Div 10 3:                              OK
+        operate Div -10 3:                             OK
+        operate Div 10 -3:                             OK
+        operate Div -10 -3:                            OK
+        operate Mod 10 3:                              OK
+        operate Mod -10 3:                             OK
+        operate Mod 10 -3:                             OK
+        operate Mod -10 -3:                            OK
+        *operate Plus '2' '3':                         OK
+        *operate Div 1 0:                              OK
+        *operate Mod 0 0:                              OK
+      relations
+        operate Less 3 4:                              OK
+        operate Less 4 4:                              OK
+        operate Less 5 4:                              OK
+        operate Greater 3 4:                           OK
+        operate Greater 4 4:                           OK
+        operate Greater 5 4:                           OK
+        operate Eq 3 4:                                OK
+        operate Eq 4 4:                                OK
+        operate Eq 5 4:                                OK
+        operate Eq '4' '4':                            OK
+        operate Eq 4 '4':                              OK
+        operate Eq None False:                         OK
+        operate Eq '' []:                              OK
+        operate Eq [4, 5] [4, 5]:                      OK
+        operate Eq [4, 5] [4, 6]:                      OK
+        operate In 4 [3, 4, 5]:                        OK
+        operate In False [True,False,<others>]:        OK
+        operate In None [True, False]:                 FAIL
+          onlinetatests/Tests.hs:67:
+          expected: Right FalseVal
+           but got: Right TrueVal
+        *operate Less '3' '4':                         OK
+        *operate Greater [] []:                        OK
+        *operate In 'b' 'abc':                         OK
+    apply
+      range
+        range(3):                                      OK
+        range(3,4):                                    OK
+        range(3,4,-1):                                 OK
+        range(1,6,2):                                  OK
+        range(10,1,-3):                                OK
+        *range():                                      OK
+        *range(1,2,3,4):                               OK
+        *range(1,2,None):                              OK
+      print
+        print():                                       OK
+        print(True,False,-3,'hello'):                  OK
+        print([[1,2],None,[]]):                        FAIL
+          onlinetatests/Tests.hs:356:
+          expected: (Right NoneVal,["[[1, 2], None, []]"])
+           but got: (Right NoneVal,["[[1 2] None [[ ]]"])
+        print(['x']):                                  FAIL
+          Exception: Prelude.tail: empty list
+        print([[''],'a\nb\'c\\d']):                    FAIL
+          Exception: Prelude.tail: empty list
+      *foobar(42):                                     OK
+  Interpreter functions
+    eval (in Env [x=4,y=5] where relevant)
+      eval 'abc':                                      OK
+      eval y:                                          OK
+      *eval z:                                         OK
+      eval ((3+x)*y):                                  OK
+      *eval (a%b):                                     OK
+      eval (not 0):                                    OK
+      *eval (not z):                                   OK
+      eval range(1,x):                                 FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:226:5 in main:BoaInterp
+      eval print(1,print()):                           FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:226:5 in main:BoaInterp
+      *eval foo(3):                                    FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:226:5 in main:BoaInterp
+      eval [(1+x),print([]),[(y*2)]]:                  FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:227:17 in main:BoaInterp
+      *eval [print(x),a,y,print(b)]:                   FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:227:17 in main:BoaInterp
+      eval [x <no clauses>]:                           FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      eval [(x+1) for x in [2,5]]:                     FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      eval [(x+y) for x in [2,5]]:                     FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      eval [x if x]:                                   FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      eval [y if x]:                                   FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      eval [x if (not x)]:                             FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      eval [<body> if False <clauses>]:                FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      eval [<body> for x in [] <clauses>]:             FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      eval [[x,y] for x in [1,2] for y in ['a','bc']]: FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      eval [x for x in range(9) if (x%2)]:             FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      eval [print(x) for x in range(9) if (x%2)]:      FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      eval [0 for x in [1,2,3] if print(x)]:           FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+      *eval [print((100//x)) for x in range(4,-4,-1)]: FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:228:28 in main:BoaInterp
+    exec (in Env [x=4,y=5])
+      exec <empty pgm>:                                FAIL
+        onlinetatests/Tests.hs:83:
+        expected: (Right (),[])
+         but got: (Right (),["end"])
+      exec print(x):                                   FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:226:5 in main:BoaInterp
+      exec print(x);x=(x+3);print(x):                  FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:226:5 in main:BoaInterp
+      *exec print(x);x=z;print(3):                     FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:226:5 in main:BoaInterp
+      exec x=7;print(x):                               FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:226:5 in main:BoaInterp
+    execute
+      execute print('ok');42:                          FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:242:11 in main:BoaInterp
+      *execute print('ok');crash(42):                  FAIL
+        Exception: Prelude.undefined
+        CallStack (from HasCallStack):
+          error, called at libraries/base/GHC/Err.hs:75:14 in base:GHC.Err
+          undefined, called at src/BoaInterp.hs:242:11 in main:BoaInterp
+
+30 out of 110 tests failed (0.04s)
+Warning:
+  Some tests for Part 2 failed, please comment on this in your report
+dynamic/runtests.sh FAILED
+---
+I am not fully satisfied.
+---
+Found a bug? Are the messages too cryptic?
+Let us know on Absalon or Discord.
